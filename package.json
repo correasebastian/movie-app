@@ -1,0 +1,15 @@
+{
+  "name": "movie-app",
+  "version": "0.0.1",
+  "description": "testing angular ngMock",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "karma": "^0.13.15"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
