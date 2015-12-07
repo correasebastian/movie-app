@@ -5,11 +5,17 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-inject": "^3.0.0",
+    "gulp-load-plugins": "^1.1.0",
+    "gulp-util": "^3.0.7",
     "jasmine": "^2.4.1",
     "karma": "^0.13.15",
     "karma-chrome-launcher": "^0.2.2",
     "karma-jasmine": "^0.3.6",
-    "karma-phantomjs-launcher": "^0.2.1"
+    "karma-phantomjs-launcher": "^0.2.1",
+    "phantomjs": "^1.9.19",
+    "wiredep": "^2.2.2"
   },
   "scripts": {
     "test": "karma start karma.conf.js"
