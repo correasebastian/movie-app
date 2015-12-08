@@ -25,7 +25,7 @@ describe('omdb service', function() {
 
     var omdbApi = {};
     var httpBackend;
-    var baseUrl = 'http://www.omdbapi.com/?'
+    var baseUrl = 'http://www.omdbapi.com/?';
     beforeEach(function() {
         module('omdb');
 
@@ -45,9 +45,6 @@ describe('omdb service', function() {
             .then(function(data) {
                 console.log(angular.mock.dump(data));
                 response = data;
-                // expect(data).toEqual(movieData);
-                // done();
-
             });
 
         $httpBackend.flush();
@@ -57,11 +54,41 @@ describe('omdb service', function() {
 
     });
 
+    it('should handle xhr error', function() {
+        var query = 'stars wars';
+        var response;
+        var error = {
+            message: 'cant get data from omdb'
+        };
+        var expextedUrl = baseUrl + 's=' + encodeURIComponent(query); // can be a function too, that return true if matches some conditions
+        $httpBackend.whenGET(expextedUrl)
+            .respond(500, error);
+        omdbApi.search(query)
+            .catch(function(err) {
+                console.log(angular.mock.dump(err));
+                response = err;
+            });
+
+        $httpBackend.flush();
+        expect(response).toEqual(error);
+    });
+
 
 
 
     it('shpuld return data by id', function() {
 
-        expect(omdbApi.find('tt0251413')).toEqual(movieData);
+        var id = 'tt0251413';
+        var response;
+        var expextedUrl = baseUrl + 'i=' + encodeURIComponent(id);
+        $httpBackend.whenGET(expextedUrl)
+            .respond(200, movieData);
+        omdbApi.find(id)
+            .then(function(data) {
+                console.log(angular.mock.dump(data));
+                response = data;
+            });
+        $httpBackend.flush();
+        expect(response).toEqual(movieData);
     });
 });
