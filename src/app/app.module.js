@@ -2,7 +2,5 @@
     'use strict';
 
     angular
-        .module('omdb', [
-            
-        ]);
+        .module('omdb', ['ngResource']);
 })();

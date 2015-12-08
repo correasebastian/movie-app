@@ -5,10 +5,10 @@
         .module('omdb')
         .factory('HttpHelper', HttpHelper);
 
-    HttpHelper.$inject = ['$http', '$q'];
+    HttpHelper.$inject = ['$http', 'ExceptionHelper'];
 
     /* @ngInject */
-    function HttpHelper($http, $q) {
+    function HttpHelper($http, ExceptionHelper) {
         var service = {
             get: get
         };
@@ -19,24 +19,13 @@
         function get(url, customErrorMsg) {
             return $http.get(url)
                 .then(onGetAsync)
-                .catch(onError(customErrorMsg));
+                .catch(ExceptionHelper.catchPromise(customErrorMsg));
         }
 
         function onGetAsync(response) {
             return response.data;
         }
 
-        function onError(msg) {
-            if (msg === undefined) msg = 'error';
-
-            function mainError(err) {
-                console.error(msg, err);
-                return $q.reject(err.data);
-                // return err.data;// nosirve por que no me  trigger el evento catch desde donde se efectuo la llmada
-            }
-
-            return mainError;
-
-        }
+       
     }
 })();

@@ -20,7 +20,9 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "~1.4.8"
+    "angular": "~1.4.8",
+    "angular-resource": "~1.4.8",
+    "bardjs": "~0.1.8"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.8"

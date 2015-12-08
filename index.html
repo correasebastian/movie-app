@@ -16,7 +16,11 @@
     <script src="lib/jasmine-2.4.0/boot.js"></script>
     <!-- bower:js -->
     <script src="src/lib/angular/angular.js"></script>
+    <script src="src/lib/angular-resource/angular-resource.js"></script>
     <script src="src/lib/angular-mocks/angular-mocks.js"></script>
+    <script src="src/lib/sinon/index.js"></script>
+    <script src="src/lib/bardjs/dist/bard.js"></script>
+    <script src="src/lib/bardjs/dist/bard-ngRouteTester.js"></script>
     <!-- endbower -->
     <!-- include source files here... -->
     <script src="src/app/calculator.js"></script>
@@ -27,6 +31,9 @@
 <body>
     <!-- inject:js -->
     <script src="src/app/app.module.js"></script>
+    <script src="src/app/common/exceptionHelper.factory.js"></script>
+    <script src="src/app/common/httpHelper.factory.js"></script>
+    <script src="src/app/movieCore/movie.factory.js"></script>
     <script src="src/app/omdb/omdb.factory.js"></script>
     <!-- endinject -->
 </body>

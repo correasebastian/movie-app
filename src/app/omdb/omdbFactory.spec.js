@@ -23,16 +23,18 @@ describe('omdb service', function() {
         "Response": "True"
     };
 
-    var omdbApi = {};
+    var omdbApi;
     var httpBackend;
     var baseUrl = 'http://www.omdbapi.com/?';
     beforeEach(function() {
         module('omdb');
 
-        inject(function(_omdbApi_, _$httpBackend_) {
-            omdbApi = _omdbApi_;
-            $httpBackend = _$httpBackend_;
-        });
+         inject(function(_omdbApi_, _$httpBackend_) {
+             omdbApi = _omdbApi_;
+             $httpBackend = _$httpBackend_;
+         });
+        // bard.inject(this,'omdbApi', 'httpBackend');
+
     });
 
     it('should return search movie data', function() {
@@ -43,7 +45,7 @@ describe('omdb service', function() {
             .respond(200, movieData);
         omdbApi.search(query)
             .then(function(data) {
-                console.log(angular.mock.dump(data));
+                // console.log(angular.mock.dump(data));
                 response = data;
             });
 
@@ -65,7 +67,7 @@ describe('omdb service', function() {
             .respond(500, error);
         omdbApi.search(query)
             .catch(function(err) {
-                console.log(angular.mock.dump(err));
+                // console.log(angular.mock.dump(err));
                 response = err;
             });
 
