@@ -5,10 +5,10 @@
         .module('omdb')
         .factory('omdbApi', omdbApi);
 
-    omdbApi.$inject = [];
+    omdbApi.$inject = ['$http'];
 
     /* @ngInject */
-    function omdbApi() {
+    function omdbApi($http) {
         var _movieData = {
             "Title": "Star Wars",
             "Year": "1983",
@@ -31,15 +31,37 @@
             "Type": "game",
             "Response": "True"
         };
+
+        var baseUrl = 'http://www.omdbapi.com/?';
         var service = {
-            search: search
+            search: search,
+            find: find
         };
         return service;
 
         ////////////////
 
         function search(query) {
+            var url = baseUrl + 's=' + encodeURIComponent(query);
+            return $http.get(url)
+                .then(onGetAsync)
+                .catch(onError);
+
+
+
+            // return _movieData;
+        }
+
+        function find(id) {
             return _movieData;
+        }
+
+        function onGetAsync(response) {
+            return response.data;
+        }
+
+        function onError (error) {
+            console.error(error);
         }
     }
 })();

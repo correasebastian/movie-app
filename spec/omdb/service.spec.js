@@ -23,18 +23,45 @@ describe('omdb service', function() {
         "Response": "True"
     };
 
-    it('should return search movie data', function() {
-        var omdbApi = {};
+    var omdbApi = {};
+    var httpBackend;
+    var baseUrl = 'http://www.omdbapi.com/?'
+    beforeEach(function() {
+        module('omdb');
 
-        angular.mock.module('omdb');
-
-        angular.mock.inject(function(_omdbApi_) {
+        inject(function(_omdbApi_, _$httpBackend_) {
             omdbApi = _omdbApi_;
+            $httpBackend = _$httpBackend_;
         });
+    });
+
+    it('should return search movie data', function() {
+        var query = 'stars wars';
+        var response;
+        var expextedUrl = baseUrl + 's=' + encodeURIComponent(query); // can be a function too, that return true if matches some conditions
+        $httpBackend.whenGET(expextedUrl)
+            .respond(200, movieData);
+        omdbApi.search(query)
+            .then(function(data) {
+                console.log(angular.mock.dump(data));
+                response = data;
+                // expect(data).toEqual(movieData);
+                // done();
+
+            });
+
+        $httpBackend.flush();
+        expect(response).toEqual(movieData);
 
 
 
-        expect(omdbApi.search('stars wars')).toEqual(movieData);
+    });
 
-    })
+
+
+
+    it('shpuld return data by id', function() {
+
+        expect(omdbApi.find('tt0251413')).toEqual(movieData);
+    });
 });
