@@ -1,7 +1,7 @@
 describe('Results Controller', function() {
 
     var results = {
-        "search": [{
+        "Search": [{
             "Title": "Star Wars: Episode IV - A New Hope",
             "Year": "1977",
             "imdbID": "tt0076759",
@@ -40,7 +40,7 @@ describe('Results Controller', function() {
     beforeEach(function() {
         spyOn(omdbApi, 'search').and.callFake(function() {
             var deferred = $q.defer();
-            deferred.resolve(results.search);
+            deferred.resolve(results);
             return deferred.promise;
         });
         $location.search('q', 'star wars');
@@ -54,9 +54,9 @@ describe('Results Controller', function() {
     it('should load search results', function() {
 
         dump(angular.mock.dump(ResultsController));
-        expect(ResultsController.results[0].Title).toBe(results.search[0].Title);
-        expect(ResultsController.results[1].Title).toBe(results.search[1].Title);
-        expect(ResultsController.results[2].Title).toBe(results.search[2].Title);
+        expect(ResultsController.results[0].Title).toBe(results.Search[0].Title);
+        expect(ResultsController.results[1].Title).toBe(results.Search[1].Title);
+        expect(ResultsController.results[2].Title).toBe(results.Search[2].Title);
         expect(omdbApi.search).toHaveBeenCalledWith('star wars');
     });
 

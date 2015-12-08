@@ -22,7 +22,7 @@
             then(onGetResults);
 
             function onGetResults(data) {
-                vm.results = data;
+                vm.results = data.Search;
             }
         }
     }
