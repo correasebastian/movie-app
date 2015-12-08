@@ -5,10 +5,10 @@
         .module('omdb')
         .factory('omdbApi', omdbApi);
 
-    omdbApi.$inject = ['$http', '$q'];
+    omdbApi.$inject = ['HttpHelper'];
 
     /* @ngInject */
-    function omdbApi($http, $q) {
+    function omdbApi(HttpHelper) {
         var _movieData = {
             "Title": "Star Wars",
             "Year": "1983",
@@ -44,7 +44,7 @@
         function search(query) {
             var url = baseUrl + 's=' + encodeURIComponent(query);
             var errorMsg = 'cant search by query';
-            return httpGetPromise(url, errorMsg);
+            return HttpHelper.get(url, errorMsg);
 
 
 
@@ -54,31 +54,10 @@
         function find(id) {
             var url = baseUrl + 'i=' + encodeURIComponent(id);
             var errorMsg = 'cant find by id';
-            return httpGetPromise(url, errorMsg);
+            return HttpHelper.get(url, errorMsg);
 
         }
 
-        function httpGetPromise(url, customErrorMsg) {
-            return $http.get(url)
-                .then(onGetAsync)
-                .catch(onError(customErrorMsg));
-        }
 
-        function onGetAsync(response) {
-            return response.data;
-        }
-
-        function onError(msg) {
-            if (msg === undefined) msg = 'error';
-
-            function mainError(err) {
-                console.error(msg, err);
-                return $q.reject(err.data);
-                // return err.data;// nosirve por que no me  trigger el evento catch desde donde se efectuo la llmada
-            }
-
-            return mainError;
-
-        }
     }
 })();
