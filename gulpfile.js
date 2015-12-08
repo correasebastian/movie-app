@@ -38,7 +38,7 @@ gulp.task('wiredep', function() {
         '!' + clientApp + '**/*.spec.js'
     ]
     return gulp
-        .src([root + 'index.html'])
+        .src([clientApp + 'index.html'])
         .pipe(wiredep(options))
         .pipe($.inject(gulp.src(jsCss, {
             read: false
@@ -46,7 +46,7 @@ gulp.task('wiredep', function() {
             ignorePath: 'public',
             relative: true
         }))
-        .pipe(gulp.dest(root))
+        .pipe(gulp.dest(clientApp))
 });
 
 

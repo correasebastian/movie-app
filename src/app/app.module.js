@@ -2,5 +2,5 @@
     'use strict';
 
     angular
-        .module('omdb', ['ngResource']);
+        .module('omdb', ['ngResource', 'ui.bootstrap']);
 })();

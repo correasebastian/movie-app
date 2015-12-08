@@ -19,6 +19,8 @@ module.exports = function(config) {
             'src/lib/angular/angular.js',
             'src/lib/angular-resource/angular-resource.js',
             'src/lib/angular-mocks/angular-mocks.js',
+
+            'src/lib/angular-bootstrap/ui-bootstrap-tpls.js',
             // 'src/lib/bardjs/dist/bard.js',
             'src/app/app.module.js', // main module beafore other things
             'src/app/**/*.js',

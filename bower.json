@@ -22,7 +22,7 @@
   "dependencies": {
     "angular": "~1.4.8",
     "angular-resource": "~1.4.8",
-    "bardjs": "~0.1.8"
+    "angular-bootstrap": "~0.14.3"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.8"

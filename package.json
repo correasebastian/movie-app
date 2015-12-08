@@ -18,7 +18,8 @@
     "wiredep": "^2.2.2"
   },
   "scripts": {
-    "test": "karma start karma.conf.js"
+    "test": "karma start karma.conf.js",
+    "start":"live-server --open=src/app --port=8100"
   },
   "author": "",
   "license": "ISC"
