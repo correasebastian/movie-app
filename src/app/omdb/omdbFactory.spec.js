@@ -87,7 +87,7 @@ describe('omdb service', function() {
             .respond(200, movieData);
         omdbApi.find(id)
             .then(function(data) {
-                console.log(angular.mock.dump(data));
+                // console.log(angular.mock.dump(data));
                 response = data;
             });
         $httpBackend.flush();
