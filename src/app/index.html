@@ -31,7 +31,7 @@
                 {{SearchCtrl | json}}
                 <form class="form-inline-lg" ng-submit="SearchCtrl.search()">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Film title..." ng-model="SearchCtrl.query">
+                        <input type="text" class="form-control" placeholder="Film title..." ng-model="SearchCtrl.query" ng-keyup="SearchCtrl.keyup()", ng-keydown="SearchCtrl.keydown()">
                         <span class="input-group-btn">
               <button class="btn btn-default" type="button" ng-click="SearchCtrl.search()">Go!</button>
             </span>
