@@ -10,12 +10,12 @@
     function configure($routeProvider) {
         $routeProvider
          .when('/', {
-                templateUrl: 'movieApp/home.html',
+                templateUrl: 'movieApp/home/home.html',
                 controller: 'HomeController',
                 controllerAs: 'HomeCtrl'
             })
             .when('/results', {
-                templateUrl: 'movieApp/results.html',
+                templateUrl: 'movieApp/results/results.html',
                 controller: 'ResultsController',
                 controllerAs: 'ResultsCtrl'
             })
